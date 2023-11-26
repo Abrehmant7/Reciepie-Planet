@@ -1,0 +1,68 @@
+
+  {% extends "basic.html" %}
+    {% comment %} --------------------table---------------------- {% endcomment %}
+    {% block body  %}
+    <div class="container shadow-lg mt-5">
+        <div class="card">
+            <div class="card-header">
+              Today {{value}}'s todo List
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Next task to do: {{params}}</h5>
+              <p class="card-text">{{desc}}</p>
+              <a href="#" class="btn btn-outline-primary">Delete</a>
+              <a href="/form" class="btn btn-outline-primary">Add a task</a>
+              <div class="container">
+                <form method="post" >
+                  <div class="form-check mt-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" name="done" for="flexCheckDefault">
+                      Done
+                    </label>
+                  </div>
+                  </form>
+            </div>
+            </div>
+          </div>
+    </div>
+    <br>
+    <div class="container shadow-lg mt-3 p-3">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </div>
+    <br>
+    <div class="container mt-5">
+        <table class="table table-hover shadow-lg table-bordered">
+            <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Activity</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Actions</th>
+
+          </tr>
+        </thead>
+        <tbody >
+        <tbody class="table-group-divider">
+          {% for i in data %}
+          <tr >
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{i.activity_name}}</td>
+            <td>{{i.activity_desc}}</td>
+            <td>{{i.date}}</td>
+            <td>
+              <a href="/update/{{i.id}}" class="btn btn-outline-primary">Update</a>
+
+              <a href="/delete/{{i.id}}" class="btn btn-outline-danger">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      
+        </table>
+      </div>
+      {% comment %} --------------------table---------------------- {% endcomment %}
+    {% endblock  %} 

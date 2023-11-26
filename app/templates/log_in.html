@@ -1,0 +1,29 @@
+{% extends "basic.html" %}
+
+{% block body %}
+<div class="container shadow-lg mt-5 p-5">
+    <form method="post">{% csrf_token %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-warning" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </ul>
+      {% endif %}
+        <h3>Login</h3>
+
+        <br>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Username</label>
+            <input type="text" class="form-control"  name="username" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="text" class="form-control"  name="password" id="exampleInputPassword1">
+          </div>
+        <button type="submit" class="btn btn-outline-primary mb-3">Sign in</button>
+        <p >Don't have an account? <a href="/sign_up">Sign up</a></p>
+      </form>
+</div>
+{% endblock %}
